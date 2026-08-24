@@ -32,6 +32,10 @@ export default {
         glow: '0 0 0 3px rgba(59,130,246,0.15)',
         'glow-red': '0 0 0 3px rgba(239,68,68,0.15)',
       },
+      transitionTimingFunction: {
+        spring: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+        smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
       keyframes: {
         pulseDot: {
           '0%, 100%': { opacity: 1 },
@@ -45,11 +49,46 @@ export default {
           from: { strokeDashoffset: '600' },
           to: { strokeDashoffset: '0' },
         },
+        // Scroll-triggered entrance animations
+        fadeUp: {
+          from: { opacity: 0, transform: 'translateY(20px)' },
+          to: { opacity: 1, transform: 'translateY(0)' },
+        },
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        scaleIn: {
+          from: { opacity: 0, transform: 'scale(0.95)' },
+          to: { opacity: 1, transform: 'scale(1)' },
+        },
+        slideInLeft: {
+          from: { opacity: 0, transform: 'translateX(-16px)' },
+          to: { opacity: 1, transform: 'translateX(0)' },
+        },
+        slideInRight: {
+          from: { opacity: 0, transform: 'translateX(16px)' },
+          to: { opacity: 1, transform: 'translateX(0)' },
+        },
+        slideIn: {
+          from: { opacity: 0, transform: 'translateX(20px)' },
+          to: { opacity: 1, transform: 'translateX(0)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
       },
       animation: {
         pulseDot: 'pulseDot 1.6s ease-in-out infinite',
         rise: 'rise 0.35s ease-out forwards',
         traceIn: 'traceIn 1.8s ease-out forwards',
+        fadeUp: 'fadeUp 0.45s cubic-bezier(0.4,0,0.2,1) forwards',
+        fadeIn: 'fadeIn 0.35s ease-out forwards',
+        scaleIn: 'scaleIn 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards',
+        slideInLeft: 'slideInLeft 0.4s cubic-bezier(0.4,0,0.2,1) forwards',
+        slideInRight: 'slideInRight 0.4s cubic-bezier(0.4,0,0.2,1) forwards',
+        slideIn: 'slideIn 0.3s ease-out forwards',
       },
     },
   },

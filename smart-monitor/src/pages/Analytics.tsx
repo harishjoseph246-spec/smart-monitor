@@ -7,6 +7,7 @@ import {
 import { Download, Calendar, MoreVertical } from 'lucide-react';
 import { useMonitoring } from '../context/MonitoringContext';
 import { HealthGauge } from '../components/HealthGauge';
+import { useInView } from '../hooks/useInView';
 
 const TOOLTIP = {
   contentStyle: {
@@ -20,6 +21,10 @@ const TOOLTIP = {
 
 export function AnalyticsPage() {
   const { equipment, alerts, inspections } = useMonitoring();
+
+  const [headerRef, headerVisible] = useInView({ threshold: 0.1 });
+  const [mainRef,   mainVisible]   = useInView({ threshold: 0.08 });
+  const [bottomRef, bottomVisible] = useInView({ threshold: 0.08 });
 
   const avgHealth = Math.round(equipment.reduce((s, e) => s + e.health, 0) / equipment.length) || 0;
 
